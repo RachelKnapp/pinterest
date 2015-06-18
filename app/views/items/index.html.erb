@@ -1,0 +1,14 @@
+<h3>Viewing all Items</h3>
+
+<%= render partial: 'form', locals: {new_item: @new_item} %>
+
+<% if @items.any? %>
+  <ul>
+    <% @items.each do |item| %>
+      <%= render partial: 'item', locals: {item: item} %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no items!</p>
+  <p>Create one above!</p>
+<% end %>
