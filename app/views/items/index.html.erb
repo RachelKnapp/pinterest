@@ -1,14 +1,20 @@
-<h3>Viewing all Items</h3>
-
-<%= render partial: 'form', locals: {new_item: @new_item} %>
-
-<% if @items.any? %>
-  <ul>
-    <% @items.each do |item| %>
-      <%= render partial: 'item', locals: {item: item} %>
+<div class="container">
+  <h3>Viewing all Items</h3>
+  
+  <%= render partial: 'form', locals: {new_item: @new_item} %>
+  
+  <div class="row">
+    <% if @items.any? %>
+        <% @items.each do |item| %>
+          <div class="col-md-4">
+            <%= render partial: 'item', locals: {item: item} %>
+          </div>
+        <% end %>
+    <% else %>
+      <div class="col-md-12">
+        <p>There are no items!</p>
+        <p>Create one above!</p>
+      </div>
     <% end %>
-  </ul>
-<% else %>
-  <p>There are no items!</p>
-  <p>Create one above!</p>
-<% end %>
+  </div>
+</div>
