@@ -27,4 +27,32 @@ class ItemsController < ApplicationController
       redirect_to root_path, alert: "Item could not be created :("
     end
   end
+
+  def buy
+    @item = Item.find(params[:id])
+    @amount = (@item.price * 100).round # placeholder
+
+    customer = Stripe::Customer.create(
+      :email => 'example@stripe.com',
+      :card  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      :description => "Purchased #{@item.name} on Pinterest",
+      :currency    => 'usd'
+    )
+    redirect_to root_path, notice: "Success! You've purchased #{@item.name} :)"
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to root_path
+  end
+
 end
+
+
+
+
+
+

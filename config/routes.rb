@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post 'items' => 'items#create', as: :create_item
   get 'items/:id' => 'items#show', as: :item
 
+  post 'items/:id/buy' => 'items#buy', as: :buy_item
+
   # resources :items
   # The above line equals the below 7
   # get 'items' => 'items#index'

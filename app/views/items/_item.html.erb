@@ -1,2 +1,17 @@
-<p><%= item.name %> | <%= item.price %></p>
+<p><%= item.name %></p>
 <%= image_tag item.picture.url(:medium) %>
+<p>
+  <!-- <button class="btn btn-success">Buy for $<%= number_with_precision item.price, precision: 2 %></button> -->
+  <%= form_tag buy_item_path(item) do %>
+    <article>
+      <label class="amount">
+        <span>Amount: $<%= number_with_precision item.price, precision: 2 %></span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= ENV['STRIPE_PUBLIC_KEY'] %>"
+            data-description="<%= item.name %> on Pinterest"
+            data-amount="<%= (item.price * 100).floor %>"></script>
+  <% end %>
+</p>

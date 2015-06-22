@@ -1,5 +1,7 @@
 <div class="container">
   <h3>Viewing all Items</h3>
+
+  Secret key: <%= ENV['STRIPE_SECRET_KEY'] %>
   
   <%= render partial: 'form', locals: {new_item: @new_item} %>
   
