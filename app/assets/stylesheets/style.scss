@@ -1,0 +1,25 @@
+.navbar-no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.jumbotron-main {
+  height: 500px;
+  background-image: url(/assets/missing.png);
+  background-attachment: fixed;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.jumbotron-image {
+  background-image: url(/assets/cat1.jpg);
+  height: 300px;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.main-img {
+  width: 100%;
+  border-radius: 50%;
+  padding: 10px;
+}
